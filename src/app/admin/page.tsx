@@ -139,7 +139,7 @@ export default async function AdminDashboardPage() {
         <div className="p-6 bg-white rounded-3xl border border-gray-200 shadow-sm space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-orange-600">
-              Daily Sales (आजको बिक्री)
+              Daily Sales
             </span>
             <div className="p-2 bg-orange-50 text-orange-600 rounded-xl">
               <Calendar className="w-4 h-4" />
@@ -159,7 +159,7 @@ export default async function AdminDashboardPage() {
         <div className="p-6 bg-white rounded-3xl border border-gray-200 shadow-sm space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
-              Weekly Sales (हप्ताको बिक्री)
+              Weekly Sales
             </span>
             <div className="p-2 bg-amber-50 text-amber-600 rounded-xl">
               <TrendingUp className="w-4 h-4" />
@@ -179,7 +179,7 @@ export default async function AdminDashboardPage() {
         <div className="p-6 bg-white rounded-3xl border border-gray-200 shadow-sm space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">
-              Monthly Sales (महिनाको बिक्री)
+              Monthly Sales
             </span>
             <div className="p-2 bg-emerald-50 text-emerald-600 rounded-xl">
               <ShoppingBag className="w-4 h-4" />
@@ -202,7 +202,7 @@ export default async function AdminDashboardPage() {
         <div className="lg:col-span-6 bg-white rounded-3xl p-6 border border-gray-200 shadow-sm space-y-4">
           <div className="flex items-center justify-between pb-3 border-b border-gray-100">
             <h3 className="text-base font-black text-gray-900">
-              Top Selling Products (धेरै बिक्री भएका सामान)
+              Top Selling Products
             </h3>
             <span className="text-xs text-gray-400">By units sold</span>
           </div>
@@ -242,7 +242,7 @@ export default async function AdminDashboardPage() {
             <div className="flex items-center gap-2 text-orange-600">
               <AlertTriangle className="w-4 h-4" />
               <h3 className="text-base font-black text-gray-900">
-                Low Stock Alerts (न्यून स्टक)
+                Low Stock Alerts
               </h3>
             </div>
             <Link

@@ -3,9 +3,7 @@ import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { CartProvider } from "@/context/CartContext";
 import { AuthProvider } from "@/context/AuthContext";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import ContactButtons from "@/components/ContactButtons";
+import StoreShell from "@/components/StoreShell";
 import { getCurrentUser } from "@/actions/authActions";
 
 export const metadata: Metadata = {
@@ -58,10 +56,7 @@ export default async function RootLayout({
         <LanguageProvider>
           <AuthProvider initialUser={currentUser}>
             <CartProvider>
-              <Navbar />
-              <main className="flex-1">{children}</main>
-              <ContactButtons variant="floating" />
-              <Footer />
+              <StoreShell>{children}</StoreShell>
             </CartProvider>
           </AuthProvider>
         </LanguageProvider>
