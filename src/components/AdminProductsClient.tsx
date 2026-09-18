@@ -237,7 +237,7 @@ export default function AdminProductsClient({
             <option value="ALL">All Categories</option>
             {categories.map((c) => (
               <option key={c.id} value={c.id}>
-                {c.name} {c.nameNe ? `(${c.nameNe})` : ""}
+                {c.name}
               </option>
             ))}
           </select>
@@ -289,11 +289,6 @@ export default function AdminProductsClient({
                             <span className="font-bold text-gray-900 block line-clamp-1">
                               {p.name}
                             </span>
-                            {p.nameNe && (
-                              <span className="text-[11px] text-orange-700 font-medium block">
-                                {p.nameNe}
-                              </span>
-                            )}
                             <span className="text-[10px] text-gray-400">
                               {p.category?.name} • Slug: {p.slug}
                             </span>
@@ -608,12 +603,12 @@ export default function AdminProductsClient({
                 </div>
                 <div>
                   <label className="block font-bold text-gray-700 uppercase tracking-wider mb-1">
-                    Product Name (Nepali / नेपाली)
+                    Nepali Name (Optional)
                   </label>
                   <input
                     type="text"
                     name="nameNe"
-                    placeholder="जस्तै: बनारसी जर्जेट पार्टी साडी"
+                    placeholder="Optional: Nepali translation of product name"
                     className="w-full px-3 py-2 border rounded-xl"
                   />
                 </div>
@@ -628,7 +623,7 @@ export default function AdminProductsClient({
                   <select name="categoryId" required className="w-full px-3 py-2 border rounded-xl">
                     {categories.map((c) => (
                       <option key={c.id} value={c.id}>
-                        {c.name} {c.nameNe ? `(${c.nameNe})` : ""}
+                        {c.name}
                       </option>
                     ))}
                   </select>
@@ -796,12 +791,12 @@ export default function AdminProductsClient({
                 </div>
                 <div>
                   <label className="block font-bold text-gray-700 uppercase tracking-wider mb-1">
-                    Description (Nepali / नेपाली)
+                    Nepali Description (Optional)
                   </label>
                   <textarea
                     name="descriptionNe"
                     rows={3}
-                    placeholder="कपडाको विवरण, गुणस्तर तथा विशेषता..."
+                    placeholder="Optional: Nepali translation of product description..."
                     className="w-full px-3 py-2 border rounded-xl"
                   />
                 </div>
