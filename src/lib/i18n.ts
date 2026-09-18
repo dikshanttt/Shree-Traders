@@ -3,8 +3,8 @@ export type Language = "en" | "ne";
 export const translations = {
   en: {
     storeName: "Shree Traders",
-    storeTagline: "Damak's Premier Family Fashion Destination: Women, Men & Kids",
-    storeSubtitle: "Clothing & Fashion Store • Damak",
+    storeTagline: "Find Your perfect fit. — Shop with Dipa",
+    storeSubtitle: "Family Fashion Store — Women, Men & Kids • Damak",
     storeLocation: "Thana Road, Lekhnath Chowk, Damak, Jhapa",
     home: "Home",
     sarees: "Sarees",

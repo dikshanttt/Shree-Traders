@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
 import Link from "next/link";
@@ -31,15 +31,15 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-[75vh] flex items-center justify-center px-4 py-12">
-      <div className="max-w-md w-full space-y-8 bg-white p-8 sm:p-10 rounded-3xl border border-gray-200 shadow-xl">
+    <div className="min-h-[75vh] flex items-center justify-center px-4 py-12 bg-orange-50/30">
+      <div className="max-w-md w-full space-y-8 bg-white p-8 sm:p-10 rounded-3xl border border-orange-100 shadow-xl">
         <div className="text-center">
-          <div className="w-12 h-12 rounded-full bg-rose-600 text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-md">
+          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-orange-700 text-white font-black text-xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-orange-200">
             ST
           </div>
           <h2 className="text-2xl font-black text-gray-900">Create an Account</h2>
           <p className="text-xs text-gray-500 mt-1">
-            Join Shree Traders for simple tracking and local delivery in Damak
+            Find Your perfect fit. — Shop with Dipa
           </p>
         </div>
 
@@ -60,7 +60,7 @@ export default function RegisterPage() {
                 name="name"
                 required
                 placeholder="Pooja Sharma"
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-rose-500"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-orange-400 focus:border-orange-400 outline-none"
               />
               <User className="w-4 h-4 text-gray-400 absolute left-3.5 top-3" />
             </div>
@@ -76,7 +76,7 @@ export default function RegisterPage() {
                 name="email"
                 required
                 placeholder="pooja@gmail.com"
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-rose-500"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-orange-400 focus:border-orange-400 outline-none"
               />
               <Mail className="w-4 h-4 text-gray-400 absolute left-3.5 top-3" />
             </div>
@@ -91,7 +91,7 @@ export default function RegisterPage() {
                 type="tel"
                 name="phone"
                 placeholder="98XXXXXXXX"
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-rose-500"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-orange-400 focus:border-orange-400 outline-none"
               />
               <Phone className="w-4 h-4 text-gray-400 absolute left-3.5 top-3" />
             </div>
@@ -106,8 +106,8 @@ export default function RegisterPage() {
                 type="password"
                 name="password"
                 required
-                placeholder="••••••••"
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-rose-500"
+                placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-orange-400 focus:border-orange-400 outline-none"
               />
               <Lock className="w-4 h-4 text-gray-400 absolute left-3.5 top-3" />
             </div>
@@ -116,7 +116,7 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 rounded-xl bg-rose-600 hover:bg-rose-700 disabled:bg-gray-300 text-white font-bold text-sm shadow-lg hover:shadow-rose-600/30 transition flex items-center justify-center gap-2"
+            className="w-full py-3 rounded-xl bg-orange-600 hover:bg-orange-700 disabled:bg-gray-300 text-white font-bold text-sm shadow-lg hover:shadow-orange-200 transition flex items-center justify-center gap-2"
           >
             {loading ? "Registering..." : "Create Account"}
             <ArrowRight className="w-4 h-4" />
@@ -125,7 +125,7 @@ export default function RegisterPage() {
 
         <div className="text-center pt-2 text-xs text-gray-500">
           Already have an account?{" "}
-          <Link href="/login" className="font-bold text-rose-600 hover:underline">
+          <Link href="/login" className="font-bold text-orange-600 hover:underline">
             Sign In
           </Link>
         </div>
@@ -133,3 +133,4 @@ export default function RegisterPage() {
     </div>
   );
 }
+

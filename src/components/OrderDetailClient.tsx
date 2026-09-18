@@ -173,7 +173,7 @@ export default function OrderDetailClient({ order, justPlaced = false }: OrderDe
             <span className="text-xs uppercase tracking-wider text-gray-400 font-bold">
               {t.orderId}:
             </span>
-            <span className="font-mono text-sm font-black text-rose-600">
+            <span className="font-mono text-sm font-black text-orange-600">
               #{order.id.slice(-8).toUpperCase()}
             </span>
           </div>
@@ -195,10 +195,10 @@ export default function OrderDetailClient({ order, justPlaced = false }: OrderDe
         <div className="lg:col-span-7 space-y-6">
           {/* Reservation Countdown Alert Box */}
           {order.orderStatus !== "CONFIRMED" && order.orderStatus !== "DELIVERED" && (
-            <div className={`p-5 rounded-2xl border ${timeLeft.isExpired || order.orderStatus === "CANCELLED" ? "bg-red-50 border-red-200 text-red-900" : "bg-rose-50 border-rose-200 text-rose-950"}`}>
+            <div className={`p-5 rounded-2xl border ${timeLeft.isExpired || order.orderStatus === "CANCELLED" ? "bg-red-50 border-red-200 text-red-900" : "bg-orange-50 border-orange-200 text-orange-950"}`}>
               <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
-                  <Clock className="w-5 h-5 text-rose-600" />
+                  <Clock className="w-5 h-5 text-orange-600" />
                   <span className="text-xs font-bold uppercase tracking-wider">
                     {t.reservationTimer}:
                   </span>
@@ -206,7 +206,7 @@ export default function OrderDetailClient({ order, justPlaced = false }: OrderDe
                 {timeLeft.isExpired || order.orderStatus === "CANCELLED" ? (
                   <span className="text-sm font-black text-red-600 uppercase">Expired / Cancelled</span>
                 ) : (
-                  <div className="flex items-center gap-1 font-mono font-black text-base sm:text-lg text-rose-600 bg-white px-3 py-1 rounded-xl shadow-sm border border-rose-200">
+                  <div className="flex items-center gap-1 font-mono font-black text-base sm:text-lg text-orange-600 bg-white px-3 py-1 rounded-xl shadow-sm border border-orange-200">
                     <span>{String(timeLeft.minutes).padStart(2, "0")}</span>
                     <span>:</span>
                     <span>{String(timeLeft.seconds).padStart(2, "0")}</span>
@@ -301,7 +301,7 @@ export default function OrderDetailClient({ order, justPlaced = false }: OrderDe
             </div>
             <div className="pt-2 border-t border-gray-100 flex justify-between text-sm font-black text-gray-900">
               <span>{t.totalAmount}:</span>
-              <span className="text-rose-600">{formatPrice(order.totalAmount)}</span>
+              <span className="text-orange-600">{formatPrice(order.totalAmount)}</span>
             </div>
 
             {/* Uploaded Screenshot Preview */}
@@ -330,7 +330,7 @@ export default function OrderDetailClient({ order, justPlaced = false }: OrderDe
             ) : (
               !timeLeft.isExpired && order.orderStatus !== "CANCELLED" && (
                 <form onSubmit={handleUploadProof} className="pt-4 border-t border-gray-100 space-y-3">
-                  <span className="text-xs font-bold text-rose-700 block">
+                  <span className="text-xs font-bold text-orange-700 block">
                     Upload Payment Screenshot Now:
                   </span>
                   <input
@@ -338,7 +338,7 @@ export default function OrderDetailClient({ order, justPlaced = false }: OrderDe
                     accept="image/*"
                     required
                     onChange={handleScreenshotChange}
-                    className="block w-full text-xs text-gray-500 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-rose-50 file:text-rose-700 hover:file:bg-rose-100"
+                    className="block w-full text-xs text-gray-500 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100"
                   />
                   <input
                     type="text"
@@ -350,7 +350,7 @@ export default function OrderDetailClient({ order, justPlaced = false }: OrderDe
                   <button
                     type="submit"
                     disabled={isUploading || !screenshotBase64}
-                    className="w-full py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 disabled:bg-gray-300 text-white font-bold text-xs shadow transition"
+                    className="w-full py-2.5 rounded-xl bg-orange-600 hover:bg-orange-700 disabled:bg-gray-300 text-white font-bold text-xs shadow transition"
                   >
                     {isUploading ? "Uploading..." : "Submit Proof & Confirm Reservation"}
                   </button>
@@ -360,7 +360,7 @@ export default function OrderDetailClient({ order, justPlaced = false }: OrderDe
           </div>
 
           {/* Quick Direct Inquiries */}
-          <div className="bg-gradient-to-r from-rose-50 to-amber-50 rounded-3xl p-5 border border-rose-200 text-center space-y-3">
+          <div className="bg-gradient-to-r from-orange-50 to-amber-50 rounded-3xl p-5 border border-orange-200 text-center space-y-3">
             <h4 className="text-xs font-bold text-gray-900 uppercase tracking-wider">
               Need Help With This Order?
             </h4>
@@ -379,7 +379,7 @@ export default function OrderDetailClient({ order, justPlaced = false }: OrderDe
               </a>
               <a
                 href="tel:+9779800000000"
-                className="px-4 py-2 rounded-xl bg-rose-600 text-white text-xs font-bold hover:bg-rose-700 transition flex items-center gap-1.5"
+                className="px-4 py-2 rounded-xl bg-orange-600 text-white text-xs font-bold hover:bg-orange-700 transition flex items-center gap-1.5"
               >
                 <Phone className="w-3.5 h-3.5" />
                 <span>Call Store</span>
@@ -390,7 +390,7 @@ export default function OrderDetailClient({ order, justPlaced = false }: OrderDe
           <div className="text-center">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-xs font-bold text-gray-500 hover:text-rose-600"
+              className="inline-flex items-center gap-2 text-xs font-bold text-gray-500 hover:text-orange-600"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back to Storefront</span>

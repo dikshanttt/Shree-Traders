@@ -14,7 +14,7 @@ export default function CartPage() {
   if (items.length === 0) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-20 text-center">
-        <div className="w-20 h-20 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center mx-auto mb-4">
+        <div className="w-20 h-20 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center mx-auto mb-4">
           <ShoppingBag className="w-10 h-10" />
         </div>
         <h2 className="text-2xl font-black text-gray-900 mb-2">
@@ -27,7 +27,7 @@ export default function CartPage() {
         </p>
         <Link
           href="/products"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-rose-600 text-white text-sm font-bold shadow-lg hover:bg-rose-700 transition"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-orange-600 text-white text-sm font-bold shadow-lg hover:bg-orange-700 transition"
         >
           <span>{language === "ne" ? "कलेक्सन हेर्नुहोस्" : "Browse Collections"}</span>
           <ArrowRight className="w-4 h-4" />
@@ -51,7 +51,7 @@ export default function CartPage() {
         </div>
         <button
           onClick={clearCart}
-          className="text-xs text-gray-400 hover:text-rose-600 font-medium transition"
+          className="text-xs text-gray-400 hover:text-orange-600 font-medium transition"
         >
           {language === "ne" ? "झोला खाली गर्नुहोस्" : "Clear Cart"}
         </button>
@@ -84,7 +84,7 @@ export default function CartPage() {
                   <div>
                     <Link
                       href={`/product/${item.slug}`}
-                      className="font-bold text-gray-900 hover:text-rose-600 transition text-sm sm:text-base line-clamp-1"
+                      className="font-bold text-gray-900 hover:text-orange-600 transition text-sm sm:text-base line-clamp-1"
                     >
                       {displayName}
                     </Link>
@@ -142,7 +142,7 @@ export default function CartPage() {
           <div className="pt-2">
             <Link
               href="/products"
-              className="inline-flex items-center gap-2 text-xs font-bold text-rose-600 hover:text-rose-700"
+              className="inline-flex items-center gap-2 text-xs font-bold text-orange-600 hover:text-orange-700"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>{language === "ne" ? "थप सामान हेर्नुहोस्" : "Continue Shopping"}</span>
@@ -163,7 +163,7 @@ export default function CartPage() {
             </div>
             <div className="flex justify-between text-gray-600">
               <span>Estimated Delivery Fee</span>
-              <span className="text-xs text-rose-600 font-medium">Calculated at Checkout</span>
+              <span className="text-xs text-orange-600 font-medium">Calculated at Checkout</span>
             </div>
             <div className="pt-3 border-t border-gray-100 flex justify-between text-base font-black text-gray-900">
               <span>Estimated Total</span>
@@ -173,7 +173,7 @@ export default function CartPage() {
 
           <Link
             href="/checkout"
-            className="w-full py-3.5 rounded-2xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-sm shadow-lg hover:shadow-rose-600/30 transition flex items-center justify-center gap-2"
+            className="w-full py-3.5 rounded-2xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-sm shadow-lg hover:shadow-orange-600/30 transition flex items-center justify-center gap-2"
           >
             <span>Proceed to Checkout</span>
             <ArrowRight className="w-4 h-4" />

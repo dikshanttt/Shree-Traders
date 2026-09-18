@@ -73,13 +73,13 @@ export default async function OrdersPage({ searchParams }: OrdersPageProps) {
                 name="phone"
                 defaultValue={phone || ""}
                 placeholder="Enter your phone number (e.g. 98XXXXXXXX)"
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-rose-500"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-orange-500"
               />
               <Search className="w-4 h-4 text-gray-400 absolute left-3.5 top-3" />
             </div>
             <button
               type="submit"
-              className="px-6 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow transition"
+              className="px-6 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs shadow transition"
             >
               Find Orders
             </button>
@@ -101,7 +101,7 @@ export default async function OrdersPage({ searchParams }: OrdersPageProps) {
           <div className="mt-6">
             <Link
               href="/products"
-              className="px-5 py-2.5 rounded-full bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold transition shadow"
+              className="px-5 py-2.5 rounded-full bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold transition shadow"
             >
               Start Shopping
             </Link>
@@ -112,11 +112,11 @@ export default async function OrdersPage({ searchParams }: OrdersPageProps) {
           {orders.map((order) => (
             <div
               key={order.id}
-              className="p-5 bg-white rounded-2xl border border-gray-200 shadow-sm hover:border-rose-300 transition flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+              className="p-5 bg-white rounded-2xl border border-gray-200 shadow-sm hover:border-orange-300 transition flex flex-col sm:flex-row sm:items-center justify-between gap-4"
             >
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-xs font-mono font-bold text-rose-600">
+                  <span className="text-xs font-mono font-bold text-orange-600">
                     #{order.id.slice(-8).toUpperCase()}
                   </span>
                   <span className="text-gray-300">•</span>
@@ -147,7 +147,7 @@ export default async function OrdersPage({ searchParams }: OrdersPageProps) {
                 </div>
                 <Link
                   href={`/orders/${order.id}`}
-                  className="px-4 py-2 rounded-xl bg-rose-50 hover:bg-rose-600 text-rose-700 hover:text-white text-xs font-bold transition flex items-center gap-1"
+                  className="px-4 py-2 rounded-xl bg-orange-50 hover:bg-orange-600 text-orange-700 hover:text-white text-xs font-bold transition flex items-center gap-1"
                 >
                   <span>View Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />

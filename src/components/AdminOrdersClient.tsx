@@ -130,7 +130,7 @@ export default function AdminOrdersClient({ initialOrders }: { initialOrders: Or
               onClick={() => setFilterStatus(item.val)}
               className={`px-3 py-1.5 rounded-full transition whitespace-nowrap ${
                 filterStatus === item.val
-                  ? "bg-rose-600 text-white shadow-sm"
+                  ? "bg-orange-600 text-white shadow-sm"
                   : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
               }`}
             >
@@ -162,7 +162,7 @@ export default function AdminOrdersClient({ initialOrders }: { initialOrders: Or
                 {/* Top Row: ID, Time, Status */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-gray-100">
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-sm font-black text-rose-600">
+                    <span className="font-mono text-sm font-black text-orange-600">
                       #{order.id.slice(-8).toUpperCase()}
                     </span>
                     <span className="text-gray-300">•</span>
@@ -202,7 +202,7 @@ export default function AdminOrdersClient({ initialOrders }: { initialOrders: Or
                     <p className="font-bold text-sm text-gray-900">{order.customerName}</p>
                     <a
                       href={`tel:${order.customerPhone}`}
-                      className="inline-flex items-center gap-1.5 font-bold text-rose-600 hover:underline bg-rose-50 px-2.5 py-1 rounded-lg"
+                      className="inline-flex items-center gap-1.5 font-bold text-orange-600 hover:underline bg-orange-50 px-2.5 py-1 rounded-lg"
                     >
                       <Phone className="w-3.5 h-3.5" />
                       <span>{order.customerPhone} (Call)</span>
@@ -239,7 +239,7 @@ export default function AdminOrdersClient({ initialOrders }: { initialOrders: Or
 
                     <div className="pt-2 border-t border-gray-100 flex justify-between font-black text-sm text-gray-900">
                       <span>Total (inc. Delivery):</span>
-                      <span className="text-rose-600">{formatPrice(order.totalAmount)}</span>
+                      <span className="text-orange-600">{formatPrice(order.totalAmount)}</span>
                     </div>
                   </div>
 

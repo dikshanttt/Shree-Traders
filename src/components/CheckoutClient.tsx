@@ -169,7 +169,7 @@ export default function CheckoutClient({
             {/* 1. Customer Contact */}
             <div className="bg-white rounded-3xl p-6 sm:p-7 border border-gray-200 shadow-sm space-y-4">
               <h2 className="text-base font-black text-gray-900 flex items-center gap-2 pb-2 border-b border-gray-100">
-                <User className="w-5 h-5 text-rose-600" />
+                <User className="w-5 h-5 text-orange-600" />
                 <span>{t.customerInfo}</span>
               </h2>
 
@@ -184,7 +184,7 @@ export default function CheckoutClient({
                     value={customerName}
                     onChange={(e) => setCustomerName(e.target.value)}
                     placeholder={t.customerNamePlaceholder}
-                    className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-rose-500 focus:border-rose-500 text-sm"
+                    className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 text-sm"
                   />
                 </div>
                 <div>
@@ -197,7 +197,7 @@ export default function CheckoutClient({
                     value={customerPhone}
                     onChange={(e) => setCustomerPhone(e.target.value)}
                     placeholder={t.customerPhonePlaceholder}
-                    className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-rose-500 focus:border-rose-500 text-sm"
+                    className="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 text-sm"
                   />
                   <span className="text-[11px] text-gray-400 mt-1 block">
                     Our Damak delivery rider will call this number upon arrival.
@@ -209,7 +209,7 @@ export default function CheckoutClient({
             {/* 2. Nepali Address & Delivery Zone */}
             <div className="bg-white rounded-3xl p-6 sm:p-7 border border-gray-200 shadow-sm space-y-4">
               <h2 className="text-base font-black text-gray-900 flex items-center gap-2 pb-2 border-b border-gray-100">
-                <MapPin className="w-5 h-5 text-rose-600" />
+                <MapPin className="w-5 h-5 text-orange-600" />
                 <span>{t.deliveryAddress}</span>
               </h2>
 
@@ -221,7 +221,7 @@ export default function CheckoutClient({
                 <select
                   value={selectedZoneId}
                   onChange={(e) => setSelectedZoneId(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl border border-rose-300 bg-rose-50/40 text-sm font-semibold text-gray-900 focus:ring-2 focus:ring-rose-500"
+                  className="w-full px-4 py-2.5 rounded-xl border border-orange-300 bg-orange-50/40 text-sm font-semibold text-gray-900 focus:ring-2 focus:ring-orange-500"
                 >
                   {deliveryZones.map((z) => (
                     <option key={z.id} value={z.id}>
@@ -299,7 +299,7 @@ export default function CheckoutClient({
             {/* 3. Payment Method & Screenshot Upload */}
             <div className="bg-white rounded-3xl p-6 sm:p-7 border border-gray-200 shadow-sm space-y-6">
               <h2 className="text-base font-black text-gray-900 flex items-center gap-2 pb-2 border-b border-gray-100">
-                <QrCode className="w-5 h-5 text-rose-600" />
+                <QrCode className="w-5 h-5 text-orange-600" />
                 <span>{t.paymentSelection}</span>
               </h2>
 
@@ -373,7 +373,7 @@ export default function CheckoutClient({
                     {/* Simulated Scannable QR Code Box */}
                     <div className="w-36 h-36 bg-white p-2 rounded-xl border border-gray-300 shadow-sm flex flex-col items-center justify-center text-center flex-shrink-0">
                       <QrCode className="w-24 h-24 text-gray-800" />
-                      <span className="text-[10px] font-black uppercase text-rose-600">
+                      <span className="text-[10px] font-black uppercase text-orange-600">
                         {paymentMethod === "ESEWA"
                           ? "Scan eSewa QR"
                           : paymentMethod === "FONEPAY"
@@ -448,8 +448,8 @@ export default function CheckoutClient({
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center gap-4">
-                      <label className="flex-1 w-full border-2 border-dashed border-gray-300 hover:border-rose-500 rounded-2xl p-4 text-center cursor-pointer transition bg-white">
-                        <UploadCloud className="w-8 h-8 text-rose-500 mx-auto mb-1" />
+                      <label className="flex-1 w-full border-2 border-dashed border-gray-300 hover:border-orange-500 rounded-2xl p-4 text-center cursor-pointer transition bg-white">
+                        <UploadCloud className="w-8 h-8 text-orange-500 mx-auto mb-1" />
                         <span className="text-xs font-bold text-gray-700 block">
                           Upload Payment Screenshot
                         </span>
@@ -490,13 +490,13 @@ export default function CheckoutClient({
               )}
 
               {/* Reservation Expiry Notice */}
-              <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 flex items-start gap-3 text-rose-900">
-                <Clock className="w-5 h-5 text-rose-600 flex-shrink-0 mt-0.5" />
+              <div className="p-4 rounded-2xl bg-orange-50 border border-orange-200 flex items-start gap-3 text-orange-900">
+                <Clock className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
                 <div className="text-xs space-y-1">
                   <p className="font-bold">
                     30-Minute Reservation Protection (३० मिनेट रिजर्भेसन नियम)
                   </p>
-                  <p className="text-rose-800 leading-relaxed">
+                  <p className="text-orange-800 leading-relaxed">
                     {t.reservationExpiryAlert} If proof is not provided within 30 minutes, the reserved item unlocks for other shoppers.
                   </p>
                 </div>
@@ -552,14 +552,14 @@ export default function CheckoutClient({
               </div>
               <div className="pt-3 border-t border-gray-200 flex justify-between text-lg font-black text-gray-900">
                 <span>{t.totalAmount}</span>
-                <span className="text-rose-600">{formatPrice(totalAmount)}</span>
+                <span className="text-orange-600">{formatPrice(totalAmount)}</span>
               </div>
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-4 rounded-2xl bg-rose-600 hover:bg-rose-700 disabled:bg-gray-300 text-white font-bold text-sm sm:text-base shadow-xl hover:shadow-rose-600/30 transition flex items-center justify-center gap-2"
+              className="w-full py-4 rounded-2xl bg-orange-600 hover:bg-orange-700 disabled:bg-gray-300 text-white font-bold text-sm sm:text-base shadow-xl hover:shadow-orange-600/30 transition flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <span>Processing Reservation...</span>

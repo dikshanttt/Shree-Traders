@@ -223,7 +223,7 @@ export default function AdminProductsClient({
               placeholder="Search items by name..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-rose-500"
+              className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500"
             />
             <Search className="w-3.5 h-3.5 text-gray-400 absolute left-3 top-2.5" />
           </div>
@@ -246,7 +246,7 @@ export default function AdminProductsClient({
         {/* Add New Product Trigger Button */}
         <button
           onClick={() => setIsAddModalOpen(true)}
-          className="w-full sm:w-auto px-5 py-2.5 rounded-2xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-rose-600/30 transition flex items-center justify-center gap-2"
+          className="w-full sm:w-auto px-5 py-2.5 rounded-2xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-orange-600/30 transition flex items-center justify-center gap-2"
         >
           <Plus className="w-4 h-4" />
           <span>Add New Product to Store</span>
@@ -290,7 +290,7 @@ export default function AdminProductsClient({
                               {p.name}
                             </span>
                             {p.nameNe && (
-                              <span className="text-[11px] text-rose-700 font-medium block">
+                              <span className="text-[11px] text-orange-700 font-medium block">
                                 {p.nameNe}
                               </span>
                             )}
@@ -374,7 +374,7 @@ export default function AdminProductsClient({
                             <button
                               onClick={() => handleStockDelta(p.id, null, 1)}
                               disabled={stockActionLoading === `${p.id}-total`}
-                              className="px-1.5 py-0.5 rounded bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold"
+                              className="px-1.5 py-0.5 rounded bg-orange-50 hover:bg-orange-100 text-orange-700 font-bold"
                               title="Restock +1"
                             >
                               +1
@@ -393,7 +393,7 @@ export default function AdminProductsClient({
                                 onClick={() =>
                                   setExpandedVariantsId(isExpanded ? null : p.id)
                                 }
-                                className="ml-1 text-[10px] text-gray-500 hover:text-rose-600 flex items-center gap-0.5 underline font-medium"
+                                className="ml-1 text-[10px] text-gray-500 hover:text-orange-600 flex items-center gap-0.5 underline font-medium"
                               >
                                 <span>Variants ({p.variants.length})</span>
                                 {isExpanded ? (
@@ -434,7 +434,7 @@ export default function AdminProductsClient({
                               Priority: {p.homepagePriority}
                             </span>
                             {p.featuredCategory && (
-                              <span className="text-[10px] text-rose-600 block uppercase font-bold">
+                              <span className="text-[10px] text-orange-600 block uppercase font-bold">
                                 {p.featuredCategory}
                               </span>
                             )}
@@ -496,7 +496,7 @@ export default function AdminProductsClient({
                           <div className="flex items-center justify-end gap-2">
                             <button
                               onClick={() => startEdit(p)}
-                              className="p-1.5 rounded-lg bg-gray-100 hover:bg-rose-50 text-gray-700 hover:text-rose-600 transition"
+                              className="p-1.5 rounded-lg bg-gray-100 hover:bg-orange-50 text-gray-700 hover:text-orange-600 transition"
                               title="Edit Price & Settings"
                             >
                               <Edit2 className="w-4 h-4" />
@@ -515,10 +515,10 @@ export default function AdminProductsClient({
 
                     {/* Expandable Variants Row */}
                     {isExpanded && p.variants.length > 0 && (
-                      <tr className="bg-rose-50/40">
+                      <tr className="bg-orange-50/40">
                         <td colSpan={6} className="py-3 px-6">
-                          <div className="bg-white rounded-2xl border border-rose-200 p-4 space-y-2">
-                            <span className="text-[10px] font-bold uppercase tracking-wider text-rose-800 block">
+                          <div className="bg-white rounded-2xl border border-orange-200 p-4 space-y-2">
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-orange-800 block">
                               Individual Variant Restocking:
                             </span>
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
@@ -546,7 +546,7 @@ export default function AdminProductsClient({
                                     </button>
                                     <button
                                       onClick={() => handleStockDelta(p.id, v.id, 1)}
-                                      className="px-2 py-0.5 bg-rose-600 hover:bg-rose-700 text-white rounded font-bold"
+                                      className="px-2 py-0.5 bg-orange-600 hover:bg-orange-700 text-white rounded font-bold"
                                     >
                                       +1
                                     </button>
@@ -571,7 +571,7 @@ export default function AdminProductsClient({
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
           <div className="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-gray-200 my-8 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-4 border-b border-gray-100">
-              <div className="flex items-center gap-2 text-rose-600">
+              <div className="flex items-center gap-2 text-orange-600">
                 <Sparkles className="w-5 h-5" />
                 <h2 className="text-lg font-black text-gray-900">
                   Add New Product to Store
@@ -819,7 +819,7 @@ export default function AdminProductsClient({
                 <button
                   type="submit"
                   disabled={isSubmittingNew}
-                  className="px-6 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 disabled:bg-gray-300 text-white font-bold shadow-md hover:shadow-rose-600/30 transition flex items-center gap-2"
+                  className="px-6 py-2 rounded-xl bg-orange-600 hover:bg-orange-700 disabled:bg-gray-300 text-white font-bold shadow-md hover:shadow-orange-600/30 transition flex items-center gap-2"
                 >
                   {isSubmittingNew ? "Adding Product..." : "Add Product Now"}
                 </button>

@@ -9,14 +9,18 @@ import ContactButtons from "@/components/ContactButtons";
 import { getCurrentUser } from "@/actions/authActions";
 
 export const metadata: Metadata = {
-  title: "Shree Traders | Sarees, Kurtas & Fashion in Damak, Jhapa",
+  title: "Shree Traders | Find Your perfect fit — Shop with Dipa | Damak, Jhapa",
   description:
-    "Shree Traders at Thana Road, Lekhnath Chowk, Damak. Discover premium bridal Banarasi sarees, party wear chiffons, and trending kurta sets with fast local delivery across Damak and Jhapa.",
+    "Shree Traders at Thana Road, Lekhnath Chowk, Damak. Shop with Dipa — Find Your perfect fit in bridal Banarasi sarees, designer kurtas, men's fashion, and kids' wear with fast local delivery across Damak and Jhapa.",
   keywords: [
     "Shree Traders",
+    "Shop with Dipa",
+    "Damak Clothing Store",
     "Damak Saree Shop",
     "Sarees Damak",
     "Kurtas Damak",
+    "Men's Fashion Damak",
+    "Kids Wear Damak",
     "Thana Road Damak",
     "Lekhnath Chowk Damak",
     "Banarasi Saree Nepal",

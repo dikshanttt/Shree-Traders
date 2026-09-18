@@ -12,8 +12,8 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         primary: {
-          DEFAULT: "#e11d48", // Rose 600 - rich traditional festive red/rose for sarees & kurtas
-          hover: "#be123c",
+          DEFAULT: "#E8700A", // Saffron-orange from Shree Traders business card
+          hover: "#C45E08",
           foreground: "#ffffff",
         },
         secondary: {

@@ -28,14 +28,14 @@ export default async function AdminLayout({
       <div className="bg-gray-900 text-white border-b border-gray-800 sticky top-0 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-rose-600 flex items-center justify-center font-black text-sm">
+            <div className="w-8 h-8 rounded-lg bg-orange-600 flex items-center justify-center font-black text-sm">
               ST
             </div>
             <div>
               <span className="font-bold text-sm tracking-wide">
                 Shree Traders Admin
               </span>
-              <span className="text-[10px] text-rose-400 block -mt-1 font-mono">
+              <span className="text-[10px] text-orange-400 block -mt-1 font-mono">
                 Damak, Jhapa
               </span>
             </div>
@@ -62,7 +62,7 @@ export default async function AdminLayout({
               href="/admin"
               className="text-gray-300 hover:text-white py-1 flex items-center gap-1.5 whitespace-nowrap"
             >
-              <LayoutDashboard className="w-3.5 h-3.5 text-rose-400" />
+              <LayoutDashboard className="w-3.5 h-3.5 text-orange-400" />
               <span>Sales Overview</span>
             </Link>
             <Link

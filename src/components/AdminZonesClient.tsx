@@ -71,7 +71,7 @@ export default function AdminZonesClient({ initialZones }: { initialZones: ZoneI
       <div className="flex justify-end">
         <button
           onClick={startCreate}
-          className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow transition flex items-center gap-1.5"
+          className="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs shadow transition flex items-center gap-1.5"
         >
           <Plus className="w-4 h-4" />
           <span>Add Delivery Zone</span>
@@ -79,7 +79,7 @@ export default function AdminZonesClient({ initialZones }: { initialZones: ZoneI
       </div>
 
       {isCreating && (
-        <div className="p-5 bg-white rounded-2xl border-2 border-rose-500 shadow-sm space-y-4">
+        <div className="p-5 bg-white rounded-2xl border-2 border-orange-500 shadow-sm space-y-4">
           <h3 className="text-sm font-bold text-gray-900">Create New Delivery Zone</h3>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <input
@@ -103,7 +103,7 @@ export default function AdminZonesClient({ initialZones }: { initialZones: ZoneI
                 type="checkbox"
                 checked={active}
                 onChange={(e) => setActive(e.target.checked)}
-                className="w-4 h-4 text-rose-600 rounded"
+                className="w-4 h-4 text-orange-600 rounded"
               />
               <span>Zone is Active for Checkout</span>
             </label>
@@ -152,7 +152,7 @@ export default function AdminZonesClient({ initialZones }: { initialZones: ZoneI
                       />
                     ) : (
                       <div className="flex items-center gap-2">
-                        <MapPin className="w-4 h-4 text-rose-500 flex-shrink-0" />
+                        <MapPin className="w-4 h-4 text-orange-500 flex-shrink-0" />
                         <span className="font-bold text-gray-900">{z.zoneName}</span>
                       </div>
                     )}
@@ -180,7 +180,7 @@ export default function AdminZonesClient({ initialZones }: { initialZones: ZoneI
                           type="checkbox"
                           checked={active}
                           onChange={(e) => setActive(e.target.checked)}
-                          className="w-4 h-4 text-rose-600 rounded"
+                          className="w-4 h-4 text-orange-600 rounded"
                         />
                         <span className="font-bold">Active</span>
                       </label>
@@ -217,7 +217,7 @@ export default function AdminZonesClient({ initialZones }: { initialZones: ZoneI
                     ) : (
                       <button
                         onClick={() => startEdit(z)}
-                        className="p-1.5 rounded-lg bg-gray-100 hover:bg-rose-50 text-gray-700 hover:text-rose-600 transition"
+                        className="p-1.5 rounded-lg bg-gray-100 hover:bg-orange-50 text-gray-700 hover:text-orange-600 transition"
                       >
                         <Edit2 className="w-4 h-4" />
                       </button>

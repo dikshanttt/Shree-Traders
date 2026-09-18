@@ -69,11 +69,11 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
       {/* Breadcrumbs & Title */}
       <div className="mb-8">
         <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
-          <Link href="/" className="hover:text-rose-600">
+          <Link href="/" className="hover:text-orange-600">
             Home
           </Link>
           <span>/</span>
-          <Link href="/products" className="hover:text-rose-600">
+          <Link href="/products" className="hover:text-orange-600">
             Catalog
           </Link>
           {activeCategory && (
@@ -100,7 +100,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             href="/products"
             className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition ${
               !categorySlug
-                ? "bg-rose-600 text-white shadow-sm"
+                ? "bg-orange-600 text-white shadow-sm"
                 : "bg-gray-100 text-gray-700 hover:bg-gray-200"
             }`}
           >
@@ -112,7 +112,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
               href={`/products?category=${c.slug}${sort ? `&sort=${sort}` : ""}`}
               className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition ${
                 categorySlug === c.slug
-                  ? "bg-rose-600 text-white shadow-sm"
+                  ? "bg-orange-600 text-white shadow-sm"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
             >
@@ -128,7 +128,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             <Link
               href={`/products?${categorySlug ? `category=${categorySlug}&` : ""}${searchQuery ? `search=${searchQuery}&` : ""}sort=priority`}
               className={`px-2.5 py-1.5 rounded-lg font-medium transition ${
-                sort === "priority" ? "bg-rose-100 text-rose-800" : "text-gray-600 hover:bg-gray-100"
+                sort === "priority" ? "bg-orange-100 text-orange-800" : "text-gray-600 hover:bg-gray-100"
               }`}
             >
               Featured
@@ -136,7 +136,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             <Link
               href={`/products?${categorySlug ? `category=${categorySlug}&` : ""}${searchQuery ? `search=${searchQuery}&` : ""}sort=price_asc`}
               className={`px-2.5 py-1.5 rounded-lg font-medium transition ${
-                sort === "price_asc" ? "bg-rose-100 text-rose-800" : "text-gray-600 hover:bg-gray-100"
+                sort === "price_asc" ? "bg-orange-100 text-orange-800" : "text-gray-600 hover:bg-gray-100"
               }`}
             >
               Price: Low
@@ -144,7 +144,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             <Link
               href={`/products?${categorySlug ? `category=${categorySlug}&` : ""}${searchQuery ? `search=${searchQuery}&` : ""}sort=price_desc`}
               className={`px-2.5 py-1.5 rounded-lg font-medium transition ${
-                sort === "price_desc" ? "bg-rose-100 text-rose-800" : "text-gray-600 hover:bg-gray-100"
+                sort === "price_desc" ? "bg-orange-100 text-orange-800" : "text-gray-600 hover:bg-gray-100"
               }`}
             >
               Price: High
@@ -164,7 +164,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
           <div className="mt-6">
             <Link
               href="/products"
-              className="px-5 py-2.5 rounded-full bg-rose-600 text-white text-xs font-semibold hover:bg-rose-700 transition"
+              className="px-5 py-2.5 rounded-full bg-orange-600 text-white text-xs font-semibold hover:bg-orange-700 transition"
             >
               View All Products
             </Link>

@@ -133,7 +133,7 @@ export default function ProductDetailClient({ product }: ProductDetailProps) {
               className="object-cover object-center"
             />
             {discountPercent && (
-              <span className="absolute top-4 left-4 bg-rose-600 text-white font-black text-xs px-3 py-1.5 rounded-full shadow">
+              <span className="absolute top-4 left-4 bg-orange-600 text-white font-black text-xs px-3 py-1.5 rounded-full shadow">
                 {discountPercent}% OFF
               </span>
             )}
@@ -148,7 +148,7 @@ export default function ProductDetailClient({ product }: ProductDetailProps) {
                   onClick={() => setSelectedImage(img.imageUrl)}
                   className={`relative w-20 h-24 rounded-xl overflow-hidden border-2 transition ${
                     selectedImage === img.imageUrl
-                      ? "border-rose-600 shadow-md scale-105"
+                      ? "border-orange-600 shadow-md scale-105"
                       : "border-gray-200 opacity-70 hover:opacity-100"
                   }`}
                 >
@@ -168,7 +168,7 @@ export default function ProductDetailClient({ product }: ProductDetailProps) {
         <div className="lg:col-span-6 space-y-6">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-rose-600 bg-rose-50 px-2.5 py-1 rounded-md">
+              <span className="text-xs font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-2.5 py-1 rounded-md">
                 {displayCategory}
               </span>
               {product.brand && (
@@ -243,7 +243,7 @@ export default function ProductDetailClient({ product }: ProductDetailProps) {
             <div>
               <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">
                 Select Color:{" "}
-                <span className="text-rose-600">
+                <span className="text-orange-600">
                   {selectedColorObj?.colorName}
                 </span>
               </label>
@@ -254,7 +254,7 @@ export default function ProductDetailClient({ product }: ProductDetailProps) {
                     onClick={() => setSelectedColorId(c.id)}
                     className={`px-3.5 py-2 rounded-xl text-xs font-semibold border flex items-center gap-2 transition ${
                       selectedColorId === c.id
-                        ? "border-rose-600 bg-rose-50 text-rose-700 ring-2 ring-rose-500/20"
+                        ? "border-orange-600 bg-orange-50 text-orange-700 ring-2 ring-orange-500/20"
                         : "border-gray-200 text-gray-700 hover:border-gray-300"
                     }`}
                   >
@@ -276,7 +276,7 @@ export default function ProductDetailClient({ product }: ProductDetailProps) {
             <div>
               <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-2">
                 Select Size:{" "}
-                <span className="text-rose-600">
+                <span className="text-orange-600">
                   {selectedSizeObj?.sizeName}
                 </span>
               </label>
@@ -287,7 +287,7 @@ export default function ProductDetailClient({ product }: ProductDetailProps) {
                     onClick={() => setSelectedSizeId(s.id)}
                     className={`px-4 py-2 rounded-xl text-xs font-semibold border transition ${
                       selectedSizeId === s.id
-                        ? "border-rose-600 bg-rose-600 text-white shadow-sm"
+                        ? "border-orange-600 bg-orange-600 text-white shadow-sm"
                         : "border-gray-200 text-gray-700 hover:border-gray-300"
                     }`}
                   >
@@ -335,7 +335,7 @@ export default function ProductDetailClient({ product }: ProductDetailProps) {
               <button
                 onClick={handleAddToCart}
                 disabled={isOutOfStock}
-                className="flex-1 py-3.5 px-6 rounded-2xl bg-rose-600 hover:bg-rose-700 disabled:bg-gray-300 text-white font-bold text-sm sm:text-base shadow-lg hover:shadow-rose-600/30 transition flex items-center justify-center gap-2"
+                className="flex-1 py-3.5 px-6 rounded-2xl bg-orange-600 hover:bg-orange-700 disabled:bg-gray-300 text-white font-bold text-sm sm:text-base shadow-lg hover:shadow-orange-600/30 transition flex items-center justify-center gap-2"
               >
                 <ShoppingBag className="w-5 h-5" />
                 <span>{isOutOfStock ? t.sold : t.addToCart}</span>
@@ -373,7 +373,7 @@ export default function ProductDetailClient({ product }: ProductDetailProps) {
 
             <div className="grid grid-cols-2 gap-3 pt-2 text-xs text-gray-600">
               <div className="flex items-center gap-2 p-2.5 bg-gray-50 rounded-xl">
-                <Truck className="w-4 h-4 text-rose-600" />
+                <Truck className="w-4 h-4 text-orange-600" />
                 <span>Delivery in Damak within 24-48 hours</span>
               </div>
               <div className="flex items-center gap-2 p-2.5 bg-gray-50 rounded-xl">

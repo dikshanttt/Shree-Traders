@@ -1,240 +1,198 @@
-import React from "react";
+﻿import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { prisma } from "@/lib/prisma";
 import ProductCard from "@/components/ProductCard";
 import ContactButtons from "@/components/ContactButtons";
-import { ArrowRight, Sparkles, Truck, ShieldCheck, RefreshCw, MapPin, Users, Heart } from "lucide-react";
+import { ArrowRight, Sparkles, Truck, ShieldCheck, Star, MapPin, Users, Package } from "lucide-react";
 
-export const revalidate = 0; // Dynamic data
+export const revalidate = 0;
 
 export default async function HomePage() {
-  // Query categories
   const categories = await prisma.category.findMany({
     orderBy: { name: "asc" },
   });
 
-  // Query Featured Sarees
   const featuredSarees = await prisma.product.findMany({
-    where: {
-      status: { not: "HIDDEN" },
-      category: { slug: "sarees" },
-    },
-    include: {
-      images: true,
-      category: true,
-      variants: true,
-    },
-    orderBy: [
-      { homepagePriority: "desc" },
-      { createdAt: "desc" },
-    ],
+    where: { status: { not: "HIDDEN" }, category: { slug: "sarees" } },
+    include: { images: true, category: true, variants: true },
+    orderBy: [{ homepagePriority: "desc" }, { createdAt: "desc" }],
     take: 4,
   });
 
-  // Query Featured Kurtas
   const featuredKurtas = await prisma.product.findMany({
-    where: {
-      status: { not: "HIDDEN" },
-      category: { slug: "kurtas" },
-    },
-    include: {
-      images: true,
-      category: true,
-      variants: true,
-    },
-    orderBy: [
-      { homepagePriority: "desc" },
-      { createdAt: "desc" },
-    ],
+    where: { status: { not: "HIDDEN" }, category: { slug: "kurtas" } },
+    include: { images: true, category: true, variants: true },
+    orderBy: [{ homepagePriority: "desc" }, { createdAt: "desc" }],
     take: 4,
   });
 
-  // Query Featured Men's Wear
   const featuredMens = await prisma.product.findMany({
     where: {
       status: { not: "HIDDEN" },
-      OR: [
-        { category: { slug: "mens-wear" } },
-        { featuredCategory: "MENS" },
-      ],
+      OR: [{ category: { slug: "mens-wear" } }, { featuredCategory: "MENS" }],
     },
-    include: {
-      images: true,
-      category: true,
-      variants: true,
-    },
-    orderBy: [
-      { homepagePriority: "desc" },
-      { createdAt: "desc" },
-    ],
+    include: { images: true, category: true, variants: true },
+    orderBy: [{ homepagePriority: "desc" }, { createdAt: "desc" }],
     take: 4,
   });
 
-  // Query Featured Kids' Wear
   const featuredKids = await prisma.product.findMany({
-    where: {
-      status: { not: "HIDDEN" },
-      category: { slug: "kids-wear" },
-    },
-    include: {
-      images: true,
-      category: true,
-      variants: true,
-    },
-    orderBy: [
-      { homepagePriority: "desc" },
-      { createdAt: "desc" },
-    ],
+    where: { status: { not: "HIDDEN" }, category: { slug: "kids-wear" } },
+    include: { images: true, category: true, variants: true },
+    orderBy: [{ homepagePriority: "desc" }, { createdAt: "desc" }],
     take: 4,
   });
 
   return (
     <div className="space-y-10 sm:space-y-16 pb-16 w-full max-w-full overflow-x-hidden">
-      {/* Hero Banner Section */}
-      <section className="relative bg-gradient-to-br from-rose-900 via-rose-950 to-stone-900 text-white overflow-hidden py-10 sm:py-20 px-3 sm:px-6 lg:px-8 w-full">
-        {/* Subtle background glow */}
-        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#f43f5e_1px,transparent_1px)] [background-size:16px_16px]"></div>
-        <div className="absolute top-1/4 right-0 w-80 h-80 bg-rose-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div className="max-w-7xl mx-auto relative z-10 w-full">
+      {/* ── HERO SECTION ── */}
+      <section className="relative overflow-hidden w-full">
+        {/* Background gradient — warm saffron-orange matching business card */}
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-900 via-orange-800 to-amber-900" />
+        {/* Subtle texture overlay */}
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-orange-400/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-amber-300/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-            {/* Left Copy */}
-            <div className="lg:col-span-7 space-y-4 sm:space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/20 border border-rose-400/30 text-rose-200 text-xs font-semibold">
+
+            {/* Left: Copy */}
+            <div className="lg:col-span-7 space-y-5 sm:space-y-7 text-white">
+              {/* Location badge */}
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-orange-100 text-xs font-semibold backdrop-blur-sm">
                 <MapPin className="w-3.5 h-3.5 text-amber-300 flex-shrink-0" />
-                <span className="truncate">Thana Road, Lekhnath Chowk, Damak</span>
+                <span>Thana Road, Lekhnath Chowk, Damak</span>
               </div>
 
-              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
-                Complete Family Fashion:{" "}
-                <span className="text-amber-300">Women</span>,{" "}
-                <span className="text-sky-300">Men</span> &{" "}
-                <span className="text-rose-400">Kids</span>
-              </h1>
+              {/* Store name badge */}
+              <div>
+                <p className="text-amber-200 text-sm font-semibold tracking-widest uppercase mb-2">Shree Traders</p>
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1]">
+                  Find Your{" "}
+                  <span className="text-amber-300 italic">perfect</span>{" "}
+                  fit.
+                </h1>
+                <p className="text-orange-200 text-lg sm:text-2xl font-semibold mt-2 italic">
+                  — Shop with Dipa
+                </p>
+              </div>
 
-              <p className="text-xs sm:text-base text-rose-100 max-w-xl leading-relaxed">
-                Welcome to Shree Traders Damak. From bridal Banarasi sarees and designer kurtas to men's cotton shirts, kurta pyjamas, and vibrant kids' festive wear — discover quality clothing for the whole family!
+              <p className="text-sm sm:text-base text-orange-100 max-w-xl leading-relaxed">
+                Your complete family fashion destination in Damak. Bridal Banarasi sarees, designer kurtas, men&apos;s fashion, and vibrant kids&apos; wear — curated with love.
               </p>
 
-              {/* Quick Category Action Pills */}
-              <div className="flex flex-wrap items-center gap-2 pt-1">
+              {/* Category pills */}
+              <div className="flex flex-wrap items-center gap-2.5 pt-1">
                 <Link
                   href="/products?category=sarees"
-                  className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs sm:text-sm transition shadow shadow-rose-600/30 flex items-center gap-1.5"
+                  className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-white text-orange-800 hover:bg-orange-50 font-bold text-xs sm:text-sm transition shadow-lg flex items-center gap-1.5"
                 >
-                  <span>👗 Sarees (साडी)</span>
+                  👗 Sarees
                 </Link>
                 <Link
                   href="/products?category=kurtas"
-                  className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-amber-500 hover:bg-amber-400 text-stone-900 font-bold text-xs sm:text-sm transition shadow flex items-center gap-1.5"
+                  className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-amber-400 hover:bg-amber-300 text-gray-900 font-bold text-xs sm:text-sm transition shadow flex items-center gap-1.5"
                 >
-                  <span>👘 Kurtas (कुर्ता)</span>
+                  👘 Kurtas
                 </Link>
                 <Link
                   href="/products?category=mens-wear"
-                  className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs sm:text-sm transition shadow flex items-center gap-1.5"
+                  className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-white/15 hover:bg-white/25 text-white border border-white/30 font-bold text-xs sm:text-sm transition flex items-center gap-1.5"
                 >
-                  <span>👔 Men's (पुरुष)</span>
+                  👔 Men&apos;s
                 </Link>
                 <Link
                   href="/products?category=kids-wear"
-                  className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm transition shadow flex items-center gap-1.5"
+                  className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-white/15 hover:bg-white/25 text-white border border-white/30 font-bold text-xs sm:text-sm transition flex items-center gap-1.5"
                 >
-                  <span>🧒 Kids' (बालक/बालिका)</span>
+                  🧒 Kids&apos;
                 </Link>
               </div>
 
-              {/* Direct Store Contact hint */}
-              <div className="pt-2 flex items-center gap-3 text-xs text-rose-200">
-                <span className="text-rose-300">Fast Order Assistance:</span>
+              {/* CTA + WhatsApp */}
+              <div className="flex flex-wrap items-center gap-3 pt-1">
+                <Link
+                  href="/products"
+                  className="px-6 py-3 rounded-full bg-orange-500 hover:bg-orange-400 text-white font-bold text-sm shadow-lg shadow-orange-900/40 flex items-center gap-2 transition"
+                >
+                  Shop Now <ArrowRight className="w-4 h-4" />
+                </Link>
                 <a
-                  href="https://wa.me/9779800000000"
+                  href="https://wa.me/9779842428714"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-amber-300 hover:underline font-bold"
+                  className="px-6 py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-lg flex items-center gap-2 transition"
                 >
-                  WhatsApp: 9800000000
+                  WhatsApp Order
                 </a>
               </div>
             </div>
 
-            {/* Right Hero Image Collage */}
+            {/* Right: Hero image */}
             <div className="lg:col-span-5 relative">
-              <div className="relative mx-auto max-w-sm rounded-3xl overflow-hidden shadow-2xl border-4 border-rose-500/20 aspect-[3/4] w-full">
+              <div className="relative mx-auto max-w-sm rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 aspect-[3/4] w-full">
                 <Image
                   src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&q=80&w=900"
-                  alt="Shree Traders Damak Family Fashion"
+                  alt="Shree Traders — Family Fashion, Damak"
                   fill
                   priority
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-orange-950/90 via-orange-900/20 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <span className="bg-rose-600 text-white text-[10px] font-black uppercase px-2 py-0.5 rounded">
-                    Festive Family Special
+                  <span className="bg-orange-600 text-white text-[10px] font-black uppercase px-2 py-0.5 rounded-md tracking-wider">
+                    Festive Collection
                   </span>
-                  <h4 className="text-base sm:text-lg font-bold mt-1">
-                    Sarees, Kurtas, Men's & Kids' Wear
+                  <h4 className="text-base sm:text-lg font-bold mt-1.5">
+                    Sarees · Kurtas · Men&apos;s · Kids&apos;
                   </h4>
-                  <p className="text-[11px] text-gray-200">Thana Road, Lekhnath Chowk, Damak</p>
+                  <p className="text-[11px] text-orange-200 mt-0.5">Thana Road, Lekhnath Chowk, Damak</p>
                 </div>
+              </div>
+              {/* Floating badge */}
+              <div className="absolute -top-3 -right-3 bg-amber-400 text-gray-900 rounded-2xl px-3 py-2 text-center shadow-lg rotate-6">
+                <p className="text-[10px] font-bold uppercase tracking-wide">Est. 2025</p>
+                <p className="text-xs font-black">Damak&apos;s</p>
+                <p className="text-[10px] font-bold">Fashion Store</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Trust Badges */}
+      {/* ── TRUST / VALUES BADGES ── */}
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 p-4 sm:p-6 bg-white rounded-3xl border border-gray-100 shadow-sm">
-          <div className="flex items-center gap-2.5">
-            <div className="p-2 sm:p-2.5 bg-rose-50 text-rose-600 rounded-xl flex-shrink-0">
-              <Truck className="w-4 h-4 sm:w-5 sm:h-5" />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 p-4 sm:p-6 bg-white rounded-3xl border border-orange-100 shadow-sm">
+          {[
+            { icon: <Truck className="w-5 h-5" />, color: "text-orange-600 bg-orange-50", title: "Local Delivery", sub: "Damak & Jhapa area" },
+            { icon: <Users className="w-5 h-5" />, color: "text-blue-600 bg-blue-50", title: "Whole Family", sub: "Women, Men & Kids" },
+            { icon: <ShieldCheck className="w-5 h-5" />, color: "text-emerald-600 bg-emerald-50", title: "Digital Payments", sub: "eSewa & Fonepay QR" },
+            { icon: <Star className="w-5 h-5" />, color: "text-amber-600 bg-amber-50", title: "Quality & Trust", sub: "Shop with Dipa" },
+          ].map((b) => (
+            <div key={b.title} className="flex items-center gap-2.5">
+              <div className={`p-2 sm:p-2.5 rounded-xl flex-shrink-0 ${b.color}`}>
+                {b.icon}
+              </div>
+              <div>
+                <h4 className="text-xs sm:text-sm font-bold text-gray-900">{b.title}</h4>
+                <p className="text-[10px] sm:text-xs text-gray-500">{b.sub}</p>
+              </div>
             </div>
-            <div>
-              <h4 className="text-xs sm:text-sm font-bold text-gray-900">Local Delivery</h4>
-              <p className="text-[10px] sm:text-xs text-gray-500">Damak & Jhapa area</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2.5">
-            <div className="p-2 sm:p-2.5 bg-blue-50 text-blue-600 rounded-xl flex-shrink-0">
-              <Users className="w-4 h-4 sm:w-5 sm:h-5" />
-            </div>
-            <div>
-              <h4 className="text-xs sm:text-sm font-bold text-gray-900">Whole Family</h4>
-              <p className="text-[10px] sm:text-xs text-gray-500">Women, Men & Kids</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2.5">
-            <div className="p-2 sm:p-2.5 bg-amber-50 text-amber-600 rounded-xl flex-shrink-0">
-              <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />
-            </div>
-            <div>
-              <h4 className="text-xs sm:text-sm font-bold text-gray-900">Digital Payments</h4>
-              <p className="text-[10px] sm:text-xs text-gray-500">eSewa & Fonepay QR</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2.5">
-            <div className="p-2 sm:p-2.5 bg-emerald-50 text-emerald-600 rounded-xl flex-shrink-0">
-              <RefreshCw className="w-4 h-4 sm:w-5 sm:h-5" />
-            </div>
-            <div>
-              <h4 className="text-xs sm:text-sm font-bold text-gray-900">Store Pickup</h4>
-              <p className="text-[10px] sm:text-xs text-gray-500">Lekhnath Chowk</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* Categories Showcase */}
+      {/* ── CATEGORIES ── */}
       <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full">
         <div className="flex items-center justify-between mb-4 sm:mb-6">
           <div>
             <h2 className="text-xl sm:text-2xl font-black text-gray-900">Shop by Category</h2>
-            <p className="text-xs text-gray-500 mt-0.5">Explore our complete family fashion selection</p>
+            <p className="text-xs text-gray-500 mt-0.5">Complete family fashion selection</p>
           </div>
-          <Link href="/products" className="text-xs sm:text-sm font-bold text-rose-600 hover:text-rose-700 flex items-center gap-1">
+          <Link href="/products" className="text-xs sm:text-sm font-bold text-orange-600 hover:text-orange-700 flex items-center gap-1">
             <span>View All</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
@@ -255,149 +213,130 @@ export default async function HomePage() {
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               ) : null}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute bottom-2.5 left-2.5 right-2.5 text-white">
                 <h3 className="font-bold text-xs sm:text-sm leading-tight group-hover:text-amber-300 transition">
                   {cat.name}
                 </h3>
-                {cat.nameNe && (
-                  <p className="text-[10px] text-gray-300 font-medium">{cat.nameNe}</p>
-                )}
               </div>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* 1. Featured Sarees Section */}
-      <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full">
-        <div className="flex items-center justify-between mb-4 sm:mb-6">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="p-1 bg-rose-100 text-rose-700 rounded-md">
-                <Sparkles className="w-3.5 h-3.5" />
-              </span>
-              <h2 className="text-lg sm:text-2xl font-black text-gray-900">
-                Featured Sarees (साडी कलेक्सन)
-              </h2>
+      {/* ── FEATURED SAREES ── */}
+      {featuredSarees.length > 0 && (
+        <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full">
+          <div className="flex items-center justify-between mb-4 sm:mb-6">
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="p-1 bg-orange-100 text-orange-700 rounded-md">
+                  <Sparkles className="w-3.5 h-3.5" />
+                </span>
+                <h2 className="text-lg sm:text-2xl font-black text-gray-900">Featured Sarees</h2>
+              </div>
+              <p className="text-xs text-gray-500 mt-0.5">
+                Bridal Banarasi silks, party wear chiffons & handloom cottons
+              </p>
             </div>
-            <p className="text-xs text-gray-500 mt-0.5">
-              Bridal Banarasi silks, party wear chiffons & handloom cottons
-            </p>
+            <Link href="/products?category=sarees" className="text-xs font-bold text-orange-600 hover:text-orange-700 flex items-center gap-1">
+              <span>All Sarees</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
-          <Link
-            href="/products?category=sarees"
-            className="text-xs font-bold text-rose-600 hover:text-rose-700 flex items-center gap-1"
-          >
-            <span>All Sarees</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
+            {featuredSarees.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </section>
+      )}
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
-          {featuredSarees.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      </section>
-
-      {/* 2. Featured Kurtas Section */}
-      <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full">
-        <div className="flex items-center justify-between mb-4 sm:mb-6">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="p-1 bg-amber-100 text-amber-800 rounded-md">
-                <Sparkles className="w-3.5 h-3.5" />
-              </span>
-              <h2 className="text-lg sm:text-2xl font-black text-gray-900">
-                Trending Kurtas & Sets (कुर्ताहरू)
-              </h2>
+      {/* ── FEATURED KURTAS ── */}
+      {featuredKurtas.length > 0 && (
+        <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full">
+          <div className="flex items-center justify-between mb-4 sm:mb-6">
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="p-1 bg-amber-100 text-amber-800 rounded-md">
+                  <Sparkles className="w-3.5 h-3.5" />
+                </span>
+                <h2 className="text-lg sm:text-2xl font-black text-gray-900">Trending Kurtas & Sets</h2>
+              </div>
+              <p className="text-xs text-gray-500 mt-0.5">
+                Anarkalis, embroidered festive suits & everyday comfortable kurtis
+              </p>
             </div>
-            <p className="text-xs text-gray-500 mt-0.5">
-              Anarkalis, embroidered festive suits & everyday comfortable kurtis
-            </p>
+            <Link href="/products?category=kurtas" className="text-xs font-bold text-orange-600 hover:text-orange-700 flex items-center gap-1">
+              <span>All Kurtas</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
-          <Link
-            href="/products?category=kurtas"
-            className="text-xs font-bold text-rose-600 hover:text-rose-700 flex items-center gap-1"
-          >
-            <span>All Kurtas</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
+            {featuredKurtas.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </section>
+      )}
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
-          {featuredKurtas.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      </section>
-
-      {/* 3. Featured Men's Wear Section */}
-      <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full">
-        <div className="flex items-center justify-between mb-4 sm:mb-6">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="p-1 bg-blue-100 text-blue-800 rounded-md">
-                <Sparkles className="w-3.5 h-3.5" />
-              </span>
-              <h2 className="text-lg sm:text-2xl font-black text-gray-900">
-                Men's Fashion & Shirts (पुरुष फेसन)
-              </h2>
+      {/* ── MEN'S FASHION ── */}
+      {featuredMens.length > 0 && (
+        <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full">
+          <div className="flex items-center justify-between mb-4 sm:mb-6">
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="p-1 bg-blue-100 text-blue-800 rounded-md">
+                  <Sparkles className="w-3.5 h-3.5" />
+                </span>
+                <h2 className="text-lg sm:text-2xl font-black text-gray-900">Men&apos;s Fashion</h2>
+              </div>
+              <p className="text-xs text-gray-500 mt-0.5">
+                Cotton shirts, kurta pyjamas, leather belts & caps
+              </p>
             </div>
-            <p className="text-xs text-gray-500 mt-0.5">
-              Pure cotton casual shirts, traditional kurta pyjamas, leather belts & caps
-            </p>
+            <Link href="/products?category=mens-wear" className="text-xs font-bold text-orange-600 hover:text-orange-700 flex items-center gap-1">
+              <span>All Men&apos;s</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
-          <Link
-            href="/products?category=mens-wear"
-            className="text-xs font-bold text-rose-600 hover:text-rose-700 flex items-center gap-1"
-          >
-            <span>All Men's</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
+            {featuredMens.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </section>
+      )}
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
-          {featuredMens.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      </section>
-
-      {/* 4. Featured Kids' Wear Section */}
-      <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full">
-        <div className="flex items-center justify-between mb-4 sm:mb-6">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="p-1 bg-emerald-100 text-emerald-800 rounded-md">
-                <Sparkles className="w-3.5 h-3.5" />
-              </span>
-              <h2 className="text-lg sm:text-2xl font-black text-gray-900">
-                Kids' Festive & Casual Wear (बालबालिकाका कपडा)
-              </h2>
+      {/* ── KIDS' WEAR ── */}
+      {featuredKids.length > 0 && (
+        <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full">
+          <div className="flex items-center justify-between mb-4 sm:mb-6">
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="p-1 bg-emerald-100 text-emerald-800 rounded-md">
+                  <Sparkles className="w-3.5 h-3.5" />
+                </span>
+                <h2 className="text-lg sm:text-2xl font-black text-gray-900">Kids&apos; Wear</h2>
+              </div>
+              <p className="text-xs text-gray-500 mt-0.5">
+                Boys kurta sets and girls embroidered frocks & lehengas
+              </p>
             </div>
-            <p className="text-xs text-gray-500 mt-0.5">
-              Boys kurta sets and girls embroidered party frocks & lehengas
-            </p>
+            <Link href="/products?category=kids-wear" className="text-xs font-bold text-orange-600 hover:text-orange-700 flex items-center gap-1">
+              <span>All Kids&apos;</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
-          <Link
-            href="/products?category=kids-wear"
-            className="text-xs font-bold text-rose-600 hover:text-rose-700 flex items-center gap-1"
-          >
-            <span>All Kids'</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
+            {featuredKids.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </section>
+      )}
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
-          {featuredKids.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      </section>
-
-      {/* Contact Banner */}
+      {/* ── CONTACT BANNER ── */}
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full">
         <ContactButtons variant="banner" />
       </div>

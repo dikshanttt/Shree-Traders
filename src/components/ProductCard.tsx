@@ -71,7 +71,7 @@ export default function ProductCard({ product }: { product: ProductCardData }) {
         {/* Badges Overlay */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
           {discountPercent && (
-            <span className="bg-rose-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow">
+            <span className="bg-orange-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow">
               {discountPercent}% OFF
             </span>
           )}
@@ -93,12 +93,12 @@ export default function ProductCard({ product }: { product: ProductCardData }) {
       <div className="p-4 flex-1 flex flex-col justify-between">
         <div>
           {categoryName && (
-            <span className="text-[11px] uppercase tracking-wider text-rose-600 font-semibold mb-1 block">
+            <span className="text-[11px] uppercase tracking-wider text-orange-600 font-semibold mb-1 block">
               {categoryName}
             </span>
           )}
           <Link href={`/product/${product.slug}`}>
-            <h3 className="text-sm sm:text-base font-bold text-gray-900 line-clamp-2 hover:text-rose-600 transition mb-2">
+            <h3 className="text-sm sm:text-base font-bold text-gray-900 line-clamp-2 hover:text-orange-600 transition mb-2">
               {displayName}
             </h3>
           </Link>
@@ -121,7 +121,7 @@ export default function ProductCard({ product }: { product: ProductCardData }) {
           <div className="flex items-center gap-2">
             <Link
               href={`/product/${product.slug}`}
-              className="flex-1 py-2 px-3 rounded-xl bg-rose-50 hover:bg-rose-600 text-rose-700 hover:text-white text-xs sm:text-sm font-semibold transition text-center flex items-center justify-center gap-1 group/btn"
+              className="flex-1 py-2 px-3 rounded-xl bg-orange-50 hover:bg-orange-600 text-orange-700 hover:text-white text-xs sm:text-sm font-semibold transition text-center flex items-center justify-center gap-1 group/btn"
             >
               <span>{isOutOfStock ? t.viewAll : t.buyNow}</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition" />
@@ -129,7 +129,7 @@ export default function ProductCard({ product }: { product: ProductCardData }) {
             {!isOutOfStock && (
               <button
                 onClick={handleQuickAdd}
-                className="p-2 rounded-xl bg-gray-100 hover:bg-rose-100 text-gray-700 hover:text-rose-600 transition"
+                className="p-2 rounded-xl bg-gray-100 hover:bg-orange-100 text-gray-700 hover:text-orange-600 transition"
                 title={t.addToCart}
               >
                 <ShoppingBag className="w-4 h-4" />

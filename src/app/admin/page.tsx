@@ -138,10 +138,10 @@ export default async function AdminDashboardPage() {
         {/* Daily Sales */}
         <div className="p-6 bg-white rounded-3xl border border-gray-200 shadow-sm space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-rose-600">
+            <span className="text-xs font-bold uppercase tracking-wider text-orange-600">
               Daily Sales (आजको बिक्री)
             </span>
-            <div className="p-2 bg-rose-50 text-rose-600 rounded-xl">
+            <div className="p-2 bg-orange-50 text-orange-600 rounded-xl">
               <Calendar className="w-4 h-4" />
             </div>
           </div>
@@ -239,7 +239,7 @@ export default async function AdminDashboardPage() {
         {/* Low Stock Warning Table (Product.low_stock_limit) */}
         <div className="lg:col-span-6 bg-white rounded-3xl p-6 border border-gray-200 shadow-sm space-y-4">
           <div className="flex items-center justify-between pb-3 border-b border-gray-100">
-            <div className="flex items-center gap-2 text-rose-600">
+            <div className="flex items-center gap-2 text-orange-600">
               <AlertTriangle className="w-4 h-4" />
               <h3 className="text-base font-black text-gray-900">
                 Low Stock Alerts (न्यून स्टक)
@@ -247,7 +247,7 @@ export default async function AdminDashboardPage() {
             </div>
             <Link
               href="/admin/products"
-              className="text-xs font-bold text-rose-600 hover:underline flex items-center gap-1"
+              className="text-xs font-bold text-orange-600 hover:underline flex items-center gap-1"
             >
               <span>Manage Stock</span>
               <ArrowRight className="w-3.5 h-3.5" />
