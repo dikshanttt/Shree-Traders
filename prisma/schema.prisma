@@ -1,0 +1,223 @@
+// Prisma Schema for Shree Traders E-Commerce Platform
+// Compatible with both SQLite (local dev) and PostgreSQL (Neon / Production)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(cuid())
+  name      String
+  email     String    @unique
+  phone     String?
+  password  String
+  role      String    @default("CUSTOMER") // CUSTOMER | ADMIN
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  addresses Address[]
+  orders    Order[]
+  carts     Cart[]
+}
+
+model Address {
+  id        String   @id @default(cuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  province  String   // e.g. "Koshi Province"
+  district  String   // e.g. "Jhapa"
+  city      String   // e.g. "Damak"
+  ward      String   // e.g. "Ward 2"
+  street    String   // e.g. "Thana Road, Lekhnath Chowk"
+  isDefault Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  orders    Order[]
+}
+
+model DeliveryZone {
+  id          String   @id @default(cuid())
+  zoneName    String   // e.g. "Damak (Within Ring Road)", "Jhapa District"
+  deliveryFee Float    @default(0) // in NPR
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  orders      Order[]
+}
+
+model Category {
+  id        String    @id @default(cuid())
+  name      String    // e.g. "Sarees"
+  nameNe    String?   // e.g. "साडी"
+  slug      String    @unique
+  image     String?
+  createdAt DateTime  @default(now())
+
+  products  Product[]
+}
+
+model Product {
+  id               String         @id @default(cuid())
+  categoryId       String
+  category         Category       @relation(fields: [categoryId], references: [id])
+  name             String
+  nameNe           String?
+  slug             String         @unique
+  description      String
+  descriptionNe    String?
+  brand            String?        @default("Shree Traders")
+  price            Float
+  discountPrice    Float?
+  stock            Int            @default(0)
+  lowStockLimit    Int            @default(5)
+  featuredCategory String?        // "SAREES", "KURTAS", "PROMOTIONAL", etc.
+  homepagePriority Int            @default(0) // Higher value appears first
+  status           String         @default("ACTIVE") // ACTIVE, OUT_OF_STOCK, HIDDEN, DISCONTINUED
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  images           ProductImage[]
+  colors           ProductColor[]
+  sizes            ProductSize[]
+  variants         ProductVariant[]
+}
+
+model ProductImage {
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  imageUrl  String
+  isPrimary Boolean  @default(false)
+}
+
+model ProductColor {
+  id        String           @id @default(cuid())
+  productId String
+  product   Product          @relation(fields: [productId], references: [id], onDelete: Cascade)
+  colorName String           // e.g. "Crimson Red", "Royal Blue"
+  colorHex  String?          // e.g. "#DC2626"
+  variants  ProductVariant[]
+}
+
+model ProductSize {
+  id        String           @id @default(cuid())
+  productId String
+  product   Product          @relation(fields: [productId], references: [id], onDelete: Cascade)
+  sizeName  String           // e.g. "Free Size", "M", "L", "XL"
+  variants  ProductVariant[]
+}
+
+model ProductVariant {
+  id           String        @id @default(cuid())
+  productId    String
+  product      Product       @relation(fields: [productId], references: [id], onDelete: Cascade)
+  colorId      String?
+  color        ProductColor? @relation(fields: [colorId], references: [id])
+  sizeId       String?
+  size         ProductSize?  @relation(fields: [sizeId], references: [id])
+  stock        Int           @default(1)
+
+  cartItems    CartItem[]
+  orderItems   OrderItem[]
+  reservations Reservation[]
+}
+
+model Cart {
+  id        String     @id @default(cuid())
+  userId    String?
+  user      User?      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sessionId String?    @unique
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  items     CartItem[]
+}
+
+model CartItem {
+  id               String         @id @default(cuid())
+  cartId           String
+  cart             Cart           @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  productVariantId String
+  productVariant   ProductVariant @relation(fields: [productVariantId], references: [id], onDelete: Cascade)
+  quantity         Int            @default(1)
+  createdAt        DateTime       @default(now())
+}
+
+model Order {
+  id                    String        @id @default(cuid())
+  userId                String?
+  user                  User?         @relation(fields: [userId], references: [id])
+  customerName          String
+  customerPhone         String
+  addressId             String?
+  address               Address?      @relation(fields: [addressId], references: [id])
+  deliveryZoneId        String?
+  deliveryZone          DeliveryZone? @relation(fields: [deliveryZoneId], references: [id])
+  deliveryFee           Float         @default(0)
+  subtotal              Float
+  totalAmount           Float
+  paymentMethod         String        // "ESEWA", "FONEPAY", "BANK_TRANSFER", "COD"
+  paymentStatus         String        @default("PENDING") // PENDING, SUBMITTED, VERIFIED, REJECTED
+  orderStatus           String        @default("PENDING") // PENDING, PAYMENT_SUBMITTED, CONFIRMED, PACKED, SHIPPED, DELIVERED, CANCELLED
+  reservationExpiresAt  DateTime?
+  shippingAddress       String?
+  notes                 String?
+  createdAt             DateTime      @default(now())
+  updatedAt             DateTime      @updatedAt
+
+  orderItems            OrderItem[]
+  payment               Payment?
+  reservations          Reservation[]
+}
+
+model OrderItem {
+  id               String         @id @default(cuid())
+  orderId          String
+  order            Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productVariantId String
+  productVariant   ProductVariant @relation(fields: [productVariantId], references: [id])
+  quantity         Int
+  price            Float
+}
+
+model Payment {
+  id                 String    @id @default(cuid())
+  orderId            String    @unique
+  order              Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  paymentMethod      String    // "ESEWA", "FONEPAY", "BANK_TRANSFER"
+  screenshotUrl      String?
+  referenceCode      String?
+  verificationStatus String    @default("PENDING") // PENDING, VERIFIED, REJECTED
+  verifiedAt         DateTime?
+  rejectionReason    String?
+  createdAt          DateTime  @default(now())
+}
+
+model Reservation {
+  id         String         @id @default(cuid())
+  variantId  String
+  variant    ProductVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+  orderId    String
+  order      Order          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  quantity   Int            @default(1)
+  expiresAt  DateTime
+  status     String         @default("ACTIVE") // ACTIVE, CONFIRMED, EXPIRED, CANCELLED
+  createdAt  DateTime       @default(now())
+}
+
+model Discount {
+  id            String    @id @default(cuid())
+  title         String
+  code          String?   @unique
+  discountType  String    @default("PERCENTAGE") // PERCENTAGE | FLAT
+  discountValue Float
+  startDate     DateTime?
+  endDate       DateTime?
+  active        Boolean   @default(true)
+  createdAt     DateTime  @default(now())
+}
